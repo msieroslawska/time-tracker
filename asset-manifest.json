@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/time-tracker/static/js/main.b6dd1187.chunk.js",
+    "main.js.map": "/time-tracker/static/js/main.b6dd1187.chunk.js.map",
+    "runtime~main.js": "/time-tracker/static/js/runtime~main.ee8c59cf.js",
+    "runtime~main.js.map": "/time-tracker/static/js/runtime~main.ee8c59cf.js.map",
+    "static/js/2.7c63c67b.chunk.js": "/time-tracker/static/js/2.7c63c67b.chunk.js",
+    "static/js/2.7c63c67b.chunk.js.map": "/time-tracker/static/js/2.7c63c67b.chunk.js.map",
+    "index.html": "/time-tracker/index.html",
+    "precache-manifest.0b4443a321c9a590de245c3a648ee45a.js": "/time-tracker/precache-manifest.0b4443a321c9a590de245c3a648ee45a.js",
+    "service-worker.js": "/time-tracker/service-worker.js"
+  }
+}
