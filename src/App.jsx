@@ -1,15 +1,23 @@
 import React from 'react';
 
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import { styled } from '@material-ui/styles';
+import ActionButton from './partials/Button';
+import Header from './partials/Header';
+import TaskList from './partials/TaskList';
 
-const MainContainer = styled(Container)({
-  backgroundColor: '#FFF',
-  boxShadow: 'none',
-});
+import Container from '@material-ui/core/Container';
+import grey from '@material-ui/core/colors/grey';
+import TextField from '@material-ui/core/TextField';
+
+import { withStyles } from '@material-ui/styles';
+
+const styles = {
+  mainContainer: {
+    background: grey[200],
+    'border-radius': '15px',
+    'margin-top': '10%',
+    padding: '20px',
+  },
+};
 
 class App extends React.Component {
   constructor() {
@@ -48,53 +56,45 @@ class App extends React.Component {
     });
   }
 
-  renderTaskList = () => {
-    const { taskList } = this.state;
-    return taskList.map(task => (
-      <div key={this.generateKey(task)}>{task}</div>
-    ))
-  }
-
-  generateKey = (pre) => `${pre}-${ new Date().getTime() }`
-
   render() {
     return (
-      <React.Fragment>
-        <CssBaseline />
-        <MainContainer maxWidth="sm">
-          <section>
-            <h1>Add a new task</h1>
-            <TextField
-              id="new-task-input"
-              label="Type some text.."
-              onChange={this.handleInputChange}
-              value={this.state.inputValue}
-            />
+      <Container
+        className={this.props.classes.mainContainer}
+        maxWidth="sm"
+      >
+        <Header
+          label="Add a new task"
+          variant="h3"
+        />
 
-            <Button
-              color="primary"
-              onClick={this.handleAddTask}
-              variant="contained"
-            >
-              Add new task
-            </Button>
+        <TextField
+          fullWidth
+          id="new-task-input"
+          label="Type some text.."
+          onChange={this.handleInputChange}
+          value={this.state.inputValue}
+        />
 
-            <Button
-              color="secondary"
-              onClick={this.handleRemoveAllTasks}
-              variant="contained"
-            >
-              Clear the task list
-            </Button>
-          </section>
+        <ActionButton
+          color="primary"
+          label="Add new task"
+          onClick={this.handleAddTask}
+        />
 
-          <section>
-            {this.renderTaskList()}
-          </section>
-        </MainContainer>
-      </React.Fragment>
+        <ActionButton
+          color="secondary"
+          label="Clear the task list"
+          onClick={this.handleRemoveAllTasks}
+        />
+
+        {this.state.taskList.length > 0 && (
+          <TaskList
+            taskList={this.state.taskList}
+          />
+        )}
+      </Container>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
