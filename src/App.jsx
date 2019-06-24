@@ -1,5 +1,16 @@
 import React from 'react';
 
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import { styled } from '@material-ui/styles';
+
+const MainContainer = styled(Container)({
+  backgroundColor: '#FFF',
+  boxShadow: 'none',
+});
+
 class App extends React.Component {
   constructor() {
     super();
@@ -48,36 +59,40 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="main">
-        <section className="add">
-          <h1 className="header">Add a new task</h1>
-          <input
-            className="new-task-input"
-            onChange={this.handleInputChange}
-            name="new-task"
-            type="text"
-            value={this.state.inputValue}
-          />
+      <React.Fragment>
+        <CssBaseline />
+        <MainContainer maxWidth="sm">
+          <section>
+            <h1>Add a new task</h1>
+            <TextField
+              id="new-task-input"
+              label="Type some text.."
+              onChange={this.handleInputChange}
+              value={this.state.inputValue}
+            />
 
-          <button
-            type="button"
-            onClick={this.handleAddTask}
-          >
-            Add new task
-          </button>
+            <Button
+              color="primary"
+              onClick={this.handleAddTask}
+              variant="contained"
+            >
+              Add new task
+            </Button>
 
-          <button
-            type="button"
-            onClick={this.handleRemoveAllTasks}
-          >
-            Clear the task list
-          </button>
-        </section>
+            <Button
+              color="secondary"
+              onClick={this.handleRemoveAllTasks}
+              variant="contained"
+            >
+              Clear the task list
+            </Button>
+          </section>
 
-        <section className="task-list">
-          {this.renderTaskList()}
-        </section>
-      </div>
+          <section>
+            {this.renderTaskList()}
+          </section>
+        </MainContainer>
+      </React.Fragment>
     );
   }
 }
