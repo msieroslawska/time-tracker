@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Header({ label, variant }) {
+const Header = ({ label, variant }) => {
   const classes = useStyles();
   return (
     <Typography

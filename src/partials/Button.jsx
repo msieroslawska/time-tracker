@@ -8,17 +8,15 @@ const MyButton = styled(Button)({
   margin: '15px',
 });
 
-function ActionButton({ color, label, onClick }) {
-  return (
-    <MyButton
-      color={color}
-      onClick={onClick}
-      variant="contained"
-    >
-      {label}
-    </MyButton>
-  )
-};
+const ActionButton = ({ color, label, onClick }) => (
+  <MyButton
+    color={color}
+    onClick={onClick}
+    variant="contained"
+  >
+    {label}
+  </MyButton>
+);
 
 ActionButton.propTypes = {
   color: PropTypes.string.isRequired,

@@ -19,82 +19,71 @@ const styles = {
   },
 };
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      inputValue: '',
-      taskList: this.getLocalStorageTasks(),
-    };
-  }
+const App: React.FC = (props) => {
+  const [inputValue, setInput] = React.useState('');
+  const [taskList, setTaskLisk] = React.useState([]);
 
-  getLocalStorageTasks = () => JSON.parse(localStorage.getItem('taskList')) || []
-
-  handleAddTask = () => {
-    const { inputValue, taskList } = this.state;
-    if (inputValue !== '') {
-      taskList.push(inputValue);
-      this.setState({
-        inputValue: '',
-        taskList,
-      });
-      localStorage.setItem('taskList', JSON.stringify(taskList));
+  const addTask = () => {
+    if (inputValue) {
+      setInput('');
+      setTaskLisk([...taskList, inputValue]);
     }
   }
 
-  handleRemoveAllTasks = () => {
-    this.setState({
-      inputValue: '',
-      taskList: [],
-    });
-    localStorage.removeItem('taskList');
+  const removeAllTasks = () => {
+    setInput('');
+    setTaskLisk([]);
   }
 
-  handleInputChange = (ev) => {
-    this.setState({
-      inputValue: ev.target.value,
-    });
+  const handleInputChange = (ev) => {
+    setInput(ev.target.value)
   }
 
-  render() {
-    return (
-      <Container
-        className={this.props.classes.mainContainer}
-        maxWidth="sm"
-      >
-        <Header
-          label="Add a new task"
-          variant="h3"
-        />
-
-        <TextField
-          fullWidth
-          id="new-task-input"
-          label="Type some text.."
-          onChange={this.handleInputChange}
-          value={this.state.inputValue}
-        />
-
-        <ActionButton
-          color="primary"
-          label="Add new task"
-          onClick={this.handleAddTask}
-        />
-
-        <ActionButton
-          color="secondary"
-          label="Clear the task list"
-          onClick={this.handleRemoveAllTasks}
-        />
-
-        {this.state.taskList.length > 0 && (
-          <TaskList
-            taskList={this.state.taskList}
-          />
-        )}
-      </Container>
-    );
+  const handleDelete = (task) => {
+    const removeIdx = taskList.indexOf(task);
+    if (removeIdx < 0) {
+      throw new Error('Error in deletion process!');
+    } else {
+      taskList.splice(removeIdx, 1);
+      setTaskLisk([...taskList]);
+    }
   }
+
+  return (
+    <Container
+      className={props.classes.mainContainer}
+      maxWidth="sm"
+    >
+      <Header
+        label="Add a new task"
+        variant="h3"
+      />
+
+      <TextField
+        fullWidth
+        id="new-task-input"
+        label="Type some text.."
+        onChange={handleInputChange}
+        value={inputValue}
+      />
+
+      <ActionButton
+        color="primary"
+        label="Add new task"
+        onClick={addTask}
+      />
+
+      <ActionButton
+        color="secondary"
+        label="Clear the task list"
+        onClick={removeAllTasks}
+      />
+
+      {taskList.length > 0 && (
+        <TaskList handleDelete={handleDelete} taskList={taskList} />
+      )}
+    </Container>
+  );
 }
 
 export default withStyles(styles)(App);
