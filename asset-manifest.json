@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/static/js/main.4561aa92.chunk.js",
-    "main.js.map": "/static/js/main.4561aa92.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8d7bd1a8.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8d7bd1a8.js.map",
-    "static/js/2.c9cc4dc2.chunk.js": "/static/js/2.c9cc4dc2.chunk.js",
-    "static/js/2.c9cc4dc2.chunk.js.map": "/static/js/2.c9cc4dc2.chunk.js.map",
-    "index.html": "/index.html",
-    "static/js/2.c9cc4dc2.chunk.js.LICENSE.txt": "/static/js/2.c9cc4dc2.chunk.js.LICENSE.txt"
+    "main.js": "/time-tracker/static/js/main.52505df3.chunk.js",
+    "main.js.map": "/time-tracker/static/js/main.52505df3.chunk.js.map",
+    "runtime-main.js": "/time-tracker/static/js/runtime-main.180d90a1.js",
+    "runtime-main.js.map": "/time-tracker/static/js/runtime-main.180d90a1.js.map",
+    "static/js/2.c9cc4dc2.chunk.js": "/time-tracker/static/js/2.c9cc4dc2.chunk.js",
+    "static/js/2.c9cc4dc2.chunk.js.map": "/time-tracker/static/js/2.c9cc4dc2.chunk.js.map",
+    "index.html": "/time-tracker/index.html",
+    "static/js/2.c9cc4dc2.chunk.js.LICENSE.txt": "/time-tracker/static/js/2.c9cc4dc2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8d7bd1a8.js",
+    "static/js/runtime-main.180d90a1.js",
     "static/js/2.c9cc4dc2.chunk.js",
-    "static/js/main.4561aa92.chunk.js"
+    "static/js/main.52505df3.chunk.js"
   ]
 }
